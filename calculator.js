@@ -6,72 +6,80 @@ var length;
 var result;
 
 // takes input
+// mouse
 for (let i = 0; i < document.querySelectorAll(".keys >button").length; i++) {
   document
     .querySelectorAll(".keys > button")
     [i].addEventListener("click", function () {
-      if (this.textContent != "enter") {
-        container.push(this.textContent);
-      }
-      display();
-      switch (this.textContent) {
+      processor(this.textContent);
+    });
+}
+// keyboard
+
+// sorts out the input for processing
+function processor(num) {
+  if (num != "enter") {
+    container.push(num);
+  }
+  display();
+  switch (num) {
+    case "+":
+      length = container.length;
+      var bin = container.slice(0, length - 1);
+      input1 = Number(bin.join(""));
+      break;
+
+    case "-":
+      length = container.length;
+      var bin = container.slice(0, length - 1);
+      input1 = Number(bin.join(""));
+      break;
+
+    case "*":
+      length = container.length;
+      var bin = container.slice(0, length - 1);
+      input1 = Number(bin.join(""));
+      break;
+
+    case "/":
+      length = container.length;
+      var bin = container.slice(0, length - 1);
+      input1 = Number(bin.join(""));
+      break;
+
+    case "enter":
+      var bin2 = container.slice(length);
+      input2 = Number(bin2.join(""));
+
+      operator = container[length - 1];
+      switch (operator) {
         case "+":
-          length = container.length;
-          var bin = container.slice(0, length - 1);
-          input1 = Number(bin.join(""));
+          add();
           break;
 
         case "-":
-          length = container.length;
-          var bin = container.slice(0, length - 1);
-          input1 = Number(bin.join(""));
+          minus();
           break;
 
         case "*":
-          length = container.length;
-          var bin = container.slice(0, length - 1);
-          input1 = Number(bin.join(""));
+          times();
           break;
 
         case "/":
-          length = container.length;
-          var bin = container.slice(0, length - 1);
-          input1 = Number(bin.join(""));
-          break;
-
-        case "enter":
-          var bin2 = container.slice(length);
-          input2 = Number(bin2.join(""));
-
-          operator = container[length - 1];
-          switch (operator) {
-            case "+":
-              add();
-              break;
-
-            case "-":
-              minus();
-              break;
-
-            case "*":
-              times();
-              break;
-
-            case "/":
-              divide();
-              break;
-
-            default:
-              break;
-          }
-
+          divide();
           break;
 
         default:
           break;
       }
-    });
+
+      break;
+
+    default:
+      break;
+  }
 }
+
 //display
 function display() {
   document.querySelector("h1").textContent = String(container.join(""));
