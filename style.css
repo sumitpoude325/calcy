@@ -4,11 +4,11 @@
   box-sizing: content-box;
 }
 .remove {
-  border-radius: 50%;
+  border-radius: 10px;
   background-color: white;
-  width: 20px;
+  width: 100px;
   position: relative;
-  left: 450px;
+  left: 350px;
   top: 5px;
   border: 2.5px solid black;
   text-align: center;

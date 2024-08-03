@@ -11,14 +11,46 @@ for (let i = 0; i < document.querySelectorAll(".keys >button").length; i++) {
   document
     .querySelectorAll(".keys > button")
     [i].addEventListener("click", function () {
+      console.log(this.textContent);
       processor(this.textContent);
     });
 }
-// keyboard
+//mouse erase button
+document
+  .querySelector(".remove > button")
+  .addEventListener("click", function () {
+    erase();
+  });
+
+//keyboard
+document.addEventListener("keydown", function (event) {
+  processor(event.key);
+
+  // for keyboard erase
+  if (event.key == "Backspace") {
+    erase();
+  }
+});
 
 // sorts out the input for processing
 function processor(num) {
-  if (num != "enter") {
+  console.log("ok" + num);
+  if (
+    num == "0" ||
+    num == "1" ||
+    num == "2" ||
+    num == "3" ||
+    num == "4" ||
+    num == "5" ||
+    num == "6" ||
+    num == "7" ||
+    num == "8" ||
+    num == "9" ||
+    num == "+" ||
+    num == "-" ||
+    num == "*" ||
+    num == "/"
+  ) {
     container.push(num);
   }
   display();
@@ -47,7 +79,7 @@ function processor(num) {
       input1 = Number(bin.join(""));
       break;
 
-    case "enter":
+    case "Enter":
       var bin2 = container.slice(length);
       input2 = Number(bin2.join(""));
 
@@ -85,15 +117,13 @@ function display() {
   document.querySelector("h1").textContent = String(container.join(""));
 }
 //erase form display
-document
-  .querySelector(".remove > button")
-  .addEventListener("click", function () {
-    container.pop();
-    display();
-    if (container.length == 0) {
-      document.querySelector("h1").textContent = "0";
-    }
-  });
+function erase() {
+  container.pop();
+  display();
+  if (container.length == 0) {
+    document.querySelector("h1").textContent = "0";
+  }
+}
 
 // operations
 function add() {
