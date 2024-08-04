@@ -11,7 +11,6 @@ for (let i = 0; i < document.querySelectorAll(".keys >button").length; i++) {
   document
     .querySelectorAll(".keys > button")
     [i].addEventListener("click", function () {
-      console.log(this.textContent);
       processor(this.textContent);
     });
 }
@@ -34,7 +33,6 @@ document.addEventListener("keydown", function (event) {
 
 // sorts out the input for processing
 function processor(num) {
-  console.log("ok" + num);
   if (
     num == "0" ||
     num == "1" ||
@@ -57,8 +55,8 @@ function processor(num) {
   switch (num) {
     case "+":
       length = container.length;
-      var bin = container.slice(0, length - 1);
-      input1 = Number(bin.join(""));
+      var bin = container.slice(0, length - 1); // bin is for taking slice out of input (maths problem) till it reaches operator(+,/,*,-)
+      input1 = Number(bin.join("")); // joins the array number to a single string and changes it to numbers
       break;
 
     case "-":
@@ -80,7 +78,7 @@ function processor(num) {
       break;
 
     case "Enter":
-      var bin2 = container.slice(length);
+      var bin2 = container.slice(length); // same as bin but takes number after operator
       input2 = Number(bin2.join(""));
 
       operator = container[length - 1];
