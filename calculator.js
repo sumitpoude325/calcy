@@ -34,7 +34,7 @@ document.addEventListener("keydown", function (event) {
 // sorts out the input for processing
 function processor(num) {
   if (
-    (num<=0 && num>=9) ||
+    (num>=0 && num<=9) ||
     num == "+" ||
     num == "-" ||
     num == "*" ||
