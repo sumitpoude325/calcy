@@ -6,7 +6,7 @@ var length;
 var result;
 
 // takes input
-// mouse
+// mouse pointers
 for (let i = 0; i < document.querySelectorAll(".keys >button").length; i++) {
   document
     .querySelectorAll(".keys > button")
